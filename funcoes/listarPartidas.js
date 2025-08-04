@@ -1,4 +1,4 @@
-function listarPartidasDoTorneio(menu, rl, torneios) {
+function listarPartidasDoTorneio(rl, torneios, menu) {
     if (torneios.length === 0) {
         console.log('Nenhum torneio registrado.');
         console.log('\nPressione Enter para retornar ao menu...');
