@@ -1,4 +1,4 @@
-function listarTorneios(menu, rl, torneios) {
+function listarTorneios(rl, torneios, menu) {
     if (torneios.length === 0) {
         console.log('Não há torneios de E-Sports cadastrados.');
     } else {
