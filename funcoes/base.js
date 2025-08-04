@@ -1,5 +1,3 @@
-module.exports = menu;
-
 
 const menu = require('./menu');
 const readline = require('readline');

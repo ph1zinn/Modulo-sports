@@ -26,6 +26,5 @@ function removerTorneio(rl, torneios, menu) {
     });
   }
   
-  menu(rl);
-
+  
   module.exports = removerTorneio;
