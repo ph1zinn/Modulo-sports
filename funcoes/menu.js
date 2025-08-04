@@ -48,3 +48,5 @@ function menu(rl) {
         }
     });
 }
+
+module.exports = menu
