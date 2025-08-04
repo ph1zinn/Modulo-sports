@@ -1,6 +1,13 @@
+const adicionarTorneio = require ('./adicionar');
+const listarTorneios = require ('./listar');
+const registrarPartida = require ('./registrar');
+const listarPartidasDoTorneio = require ('./listarPartidas');
+const filtrarTorneiosPorJogo = require ('./filtrar');
+const removerTorneio = require ('./remover');
+
 let torneios = [];
 
-function menu() {
+function menu(rl) {
     console.log('\n<<<GERENCIAMENTO-DE-TORNEIOS>>>');
     console.log('1. Adicionar Torneio.');
     console.log('2. Listar Torneios.');
@@ -14,22 +21,22 @@ function menu() {
     rl.question('Escolha uma opção: ', (opcao) => {
         switch (opcao) {
             case '1':
-                adicionarTorneio();
+                adicionarTorneio(rl, torneios, menu);
                 break;
             case '2':
-                listarTorneios();
+                listarTorneios(rl, torneios, menu);
                 break;
             case '3':
-                registrarPartida();
+                registrarPartida(rl, torneios, menu);
                 break;
             case '4':
-                listarPartidasDoTorneio();
+                listarPartidasDoTorneio(rl, torneios, menu);
                 break;
             case '5':
-                filtrarTorneiosPorJogo();
+                filtrarTorneiosPorJogo(rl, torneios, menu);
                 break;
             case '6':
-                removerTorneio();
+                removerTorneio(rl, torneios, menu);
                 break;
             case '7':
                 rl.close();
@@ -37,7 +44,7 @@ function menu() {
                 break;
             default:
                 console.log('Opção inválida. Tente Novamente.');
-                menu();
+                menu(rl);
         }
     });
 }
