@@ -4,6 +4,10 @@ function filtrarTorneiosPorJogo(rl, torneios, menu) {
         console.log('\nPressione Enter para retornar ao menu...');
         return rl.question('', menu(rl));
     }
+    console.log('\n=== TORNEIOS DISPONÍVEIS PARA CONSULTA ===');
+    torneios.forEach((torneio, index) => {
+        console.log(`${index + 1}. ID: ${torneio.id} | Nome: ${torneio.nome} | Jogo: ${torneio.jogo}`);
+    });
 
     rl.question('\nDigite o nome do jogo para filtrar os torneios: ', (nomeJogoBusca) => {
         if (nomeJogoBusca.trim() === '') {

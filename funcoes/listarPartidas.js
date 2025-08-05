@@ -51,7 +51,7 @@ function listarPartidasDoTorneio(rl, torneios, menu) {
             console.log("Nenhuma pontuação registrada ainda.");
         } else {
             ranking.forEach(([jogador, vitorias], index) => {
-                console.log(`${index + 1}. ${jogador} - ${vitorias} vitórias`);
+                console.log(`${index + 1}. ${jogador} - ${vitorias} vitória(as)`);
             });
         }
 

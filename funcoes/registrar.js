@@ -26,7 +26,7 @@ function registrarPartida(rl, torneios, menu) {
             return rl.question('', menu(rl));
         }
 
-        coletarDadosPartida(torneio);
+        coletarDadosPartida(rl, torneio, menu);
     });
 }
 function coletarDadosPartida(rl, torneio, menu) {
