@@ -29,3 +29,50 @@ function registrarPartida(rl, torneios, menu) {
         coletarDadosPartida(torneio);
     });
 }
+function coletarDadosPartida(rl, torneio, menu) {
+    console.log(`\nTorneio selecionado: ${torneio.nome}`);
+    console.log('Participantes registrados: ' + torneio.participantes.join(', '));
+
+    rl.question('Informe o nome do Jogador 1 (deve ser um participante): ', (jogador1) => {
+        if (!torneio.participantes.includes(jogador1.trim())) {
+            console.log(`"${jogador1.trim()}" não é um participante registrado neste torneio. Tente novamente.`);
+            return coletarDadosPartida(rl, torneio, menu);
+        }
+
+        rl.question('Informe o nome do Jogador 2 (deve ser um participante, diferente do Jogador 1): ', (jogador2) => {
+            if (!torneio.participantes.includes(jogador2.trim())) {
+                console.log(`"${jogador2.trim()}" não é um participante registrado neste torneio. Tente novamente.`);
+                return coletarDadosPartida(rl, torneio, menu);
+            }
+            if (jogador1.trim() === jogador2.trim()) {
+                console.log('Jogador 1 e Jogador 2 não podem ser a mesma pessoa. Tente novamente.');
+                return coletarDadosPartida(rl, torneio, menu);
+            }
+
+            rl.question('Informe o nome do vencedor: ', (vencedor) => {
+                if (vencedor.trim() !== jogador1.trim() && vencedor.trim() !== jogador2.trim()) {
+                    console.log('O vencedor deve ser um dos jogadores informados. Por favor, tente novamente.');
+                    return coletarDadosPartida(rl, torneio, menu);
+                }
+
+                const partida = {
+                    jogador1: jogador1.trim(),
+                    jogador2: jogador2.trim(),
+                    vencedor: vencedor.trim(),
+                    timestamp: new Date().toLocaleString()
+                };
+
+                torneio.partidas.push(partida);
+
+                console.log('\nPartida registrada com sucesso!');
+                console.log(`Partida: ${partida.jogador1} vs ${partida.jogador2}`);
+                console.log(`Vencedor: ${partida.vencedor}`);
+
+                console.log('\nPressione Enter para voltar ao menu...');
+                rl.question('', () => menu(rl));
+            });
+        });
+    });
+}
+
+module.exports = registrarPartida;
