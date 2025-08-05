@@ -33,3 +33,5 @@ function filtrarTorneiosPorJogo(rl, torneios, menu) {
         rl.question('', () => menu(rl));
     });
 }
+
+module.exports = filtrarTorneiosPorJogo
